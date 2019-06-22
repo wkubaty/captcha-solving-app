@@ -9,7 +9,6 @@ h1, h3 {
 .captcha-placeholder{
     width: 400px;
     height: 200px;
-    /*flex-grow: 1;*/
 }
 .captcha-image {
     width: 60%;
@@ -20,8 +19,6 @@ h1, h3 {
 .stats-placeholder{
     width: 400px;
     height: 300px;
-    /*width: 200px;*/
-    /*flex-grow: 1;*/
 }
 .stats-chart {
     width: 400px;
