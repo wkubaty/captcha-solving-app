@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Captcha Solver</title>
+    <script src=https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../static/js/chart.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <h1>Captcha Solver</h1>
+    <div class="container">
+    <div class="captcha-placeholder">
+        <h3>Captcha</h3>
+        <img class="captcha-image" src="{{ user_image }}" alt="User Image">
+    </div>
+    <div class="stats-placeholder">
+        <h3>Prediction</h3>
+        <canvas id="stats-chart"></canvas>
+    </div>
+    </div>
+    <div class="container">
+        <button type="button" class="btn btn-primary" onClick="window.location.reload()">Random</button>
+    </div>
+</div>
+
+<script>
+    const labels = [{% for item in labels %}
+             "{{item}}",
+            {% endfor %}];
+    const values = [{% for item in values %}
+             "{{item}}",
+            {% endfor %}];
+    renderChart(labels, values)
+</script>
+
+</body>
+</html>
