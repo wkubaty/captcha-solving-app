@@ -23,7 +23,29 @@
     </div>
 </div>
 <div class="container">
-    <button type="button" class="btn btn-primary" onClick="window.location.reload()">Random</button>
+    <h4>What word do you want to generate?</h4>
+</div>
+<div class="container">
+    <form action="/" method="get">
+        <div class="container">
+            <div class="custom-word-placeholder">
+                <div>
+                    <input id="custom-id" class="form-control form-control-lg" name="custom" value="{{ captcha_word }}">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" onclick="customized()">Generate custom word</button>
+                </div>
+            </div>
+            <div class="selected-word-placeholder">
+                <select id="selected-id" class="form-control form-control-lg" name="word">
+                    {% for word in words %}
+                        <option {% if word == captcha_word %}selected {% endif %} }}>{{ word }}</option>
+                    {% endfor %}
+                </select>
+                <button type="button" class="btn btn-primary" onClick="selected()">Generate</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <script>
@@ -33,7 +55,20 @@
     const values = [{% for item in values %}
         "{{item}}",
     {% endfor %}];
-    renderChart(labels, values)
+    renderChart(labels, values);
+
+    function selected() {
+        var e = document.getElementById("selected-id");
+        var strUser = e.options[e.selectedIndex].value;
+        window.location.href = '/?word=' + strUser
+    }
+
+    function customized() {
+        var e = document.getElementById("custom-id");
+        var strUser = e.value;
+        window.location.href = '/?word=' + strUser
+    }
+
 </script>
 
 </body>
