@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    <h1>Captcha Solver</h1>
-    <div class="container">
+<h1>Captcha Solver</h1>
+<div class="container">
     <div class="captcha-placeholder">
         <h3>Captcha</h3>
         <img class="captcha-image" src="{{ user_image }}" alt="User Image">
@@ -21,19 +21,18 @@
         <h3>Prediction</h3>
         <canvas id="stats-chart"></canvas>
     </div>
-    </div>
-    <div class="container">
-        <button type="button" class="btn btn-primary" onClick="window.location.reload()">Random</button>
-    </div>
+</div>
+<div class="container">
+    <button type="button" class="btn btn-primary" onClick="window.location.reload()">Random</button>
 </div>
 
 <script>
     const labels = [{% for item in labels %}
-             "{{item}}",
-            {% endfor %}];
+        "{{item}}",
+    {% endfor %}];
     const values = [{% for item in values %}
-             "{{item}}",
-            {% endfor %}];
+        "{{item}}",
+    {% endfor %}];
     renderChart(labels, values)
 </script>
 

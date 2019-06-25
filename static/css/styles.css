@@ -1,25 +1,30 @@
 h1, h3 {
     text-align: center;
 }
-.container{
-  display: flex;
-  /*align-items: center;*/
-  justify-content: center;
+
+.container {
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
 }
-.captcha-placeholder{
+
+.captcha-placeholder {
     width: 400px;
     height: 200px;
 }
+
 .captcha-image {
     width: 60%;
     height: 60%;
     display: block;
     margin: 10% auto;
 }
-.stats-placeholder{
+
+.stats-placeholder {
     width: 400px;
     height: 300px;
 }
+
 .stats-chart {
     width: 400px;
     height: 300px;
