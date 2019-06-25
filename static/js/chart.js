@@ -13,6 +13,13 @@ function renderChart(labels, values) {
             legend: {display: false},
             title: {
                 display: true
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return tooltipItem.xLabel.toFixed(2);
+                    }
+                }
             }
         }
     });

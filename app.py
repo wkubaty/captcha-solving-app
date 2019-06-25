@@ -26,20 +26,23 @@ print("Recognizable words: ", words)
 @app.route('/index')
 def index():
     word = request.args.get('word', type=str)
-    random_word = words[random.randint(0, n_words - 1)]
+    custom_word = request.args.get('custom_word', type=str)
+    captcha_word = words[random.randint(0, n_words - 1)]
     random_duplicate = random.randint(0, duplicates - 1)
-    if word:
-        generator.generate_single_captcha_image(word, random_duplicate)
-        random_word = word
+    if custom_word:
+        generator.generate_single_captcha_image(custom_word, random_duplicate)
+        captcha_word = custom_word
+    elif word:
+        captcha_word = word
 
-    filename = os.path.join(captchas_dir, '{}_{}.png'.format(random_word, random_duplicate))
+    filename = os.path.join(captchas_dir, '{}_{}.png'.format(captcha_word, random_duplicate))
 
     captcha = Captcha(filename)
     data_json = captcha.convert_image_to_json()
     # labels, values = query.query_endpoint("captcha", data_json)[0]
     labels, values = query.query_local(data_json)
 
-    return render_template("index.html", words=words, captcha_word=random_word, user_image=filename, labels=labels, values=values)
+    return render_template("index.html", words=sorted(words), captcha_word=captcha_word, user_image=filename, labels=labels, values=values, custom_word=custom_word)
 
 
 if __name__ == '__main__':
